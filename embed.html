@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>embed viewer [v1]</title>
+<style>
+body {
+    background: linear-gradient(90deg, rgb(0,0,0) 0%, rgb(0,150,0) 50%, rgb(0,0,0) 100%);
+}
+.centertxt {
+    text-align: center;
+}
+.titleinput-div {
+    display: block;
+    height: 200px;
+    border: none;
+}
+.input-title {
+    padding: 12px 12px;
+    width: 98%;
+    background-color: transparent;
+    color: white;
+    position: absolute;
+    top: 1;
+    right: 0;
+    left: 0;
+    height: 60px;
+    margin: auto;
+    font-size: 72px;
+    border: none;
+    -webkit-text-stroke: 3px black;
+    text-align: center;
+    outline: none;
+}
+
+.descinput-div {
+    display: block;
+    height: 200px;
+    border: none;
+}
+.input-desc {
+    padding: 6px 6px;
+    width: 98%;
+    background-color: transparent;
+    color: white;
+    position: relative;
+    top: -50%;
+    right: 0;
+    left: 0;
+    height: 15px;
+    margin: auto;
+    font-size: 16px;
+    border: none;
+    -webkit-text-stroke: 0px black;
+    text-align: center;
+    outline: none;
+}
+
+.desc2input-div {
+    display: block;
+    height: 200px;
+    border: none;
+}
+.input-desc2 {
+    padding: 6px 6px;
+    width: 98%;
+    background-color: transparent;
+    color: white;
+    position: relative;
+    top: -135%;
+    right: 0;
+    left: 0;
+    height: 15px;
+    margin: auto;
+    font-size: 16px;
+    border: none;
+    -webkit-text-stroke: 0px black;
+    text-align: center;
+    outline: none;
+}
+
+.urlinput-div {
+    display: block;
+    height: 200px;
+    border: none;
+}
+.input-url {
+    padding: 12px 12px;
+    width: 40%;
+    background-color: transparent;
+    color: white;
+    position: relative;
+    display: block;
+    top: -180%;
+    right: 0;
+    left: 0;
+    height: 50px;
+    margin: auto;
+    font-size: 50px;
+    border: 3px solid transparent;
+    background-color: transparent;
+    -webkit-text-stroke: 3px black;
+    text-align: center;
+    transition: 0.5s ease-in-out;
+}
+.input-url:focus {
+    border: 3px solid gold;
+    background-color: grey;
+    outline: none;
+}
+.submiturl-btn {
+    padding: 12px 12px;
+    position: relative;
+    top: -180%;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 50px;
+    width: 15%;
+    font-size: 20px;
+    margin: auto;
+    border-radius: 20%;
+    transition: 0.5s ease-in-out;
+    background-color: transparent;
+    border: 2.5px solid transparent;
+    color: white;
+}
+.submiturl-btn:hover {
+    background-color: lime;
+    border: 2.5px solid black;
+    color: black;
+}
+
+.embed-popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 60%;
+    border: 5px solid black;
+    background-color: turquoise;
+    height: 600px;
+    margin: auto;
+    display: none;
+}
+.embed-popup-bar {
+    height: 20px;
+    background-color: blue;
+}
+.embed-popup-exit {
+    color: red;
+    float: right;
+}
+.embed-popup-iframe {
+    width: 100%;
+    height: 100%;
+}
+</style>
+</head>
+<body>
+<div class="titleinput-div">
+<input class="input-title" value="Embed Website Viewer">
+</div>
+
+<div class="descinput-div">
+    <input class="input-desc" value="Disclaimer: Some websites might now allow viewing from an iframe and will result in a connection error. If this happens, then the url you are trying is likely to not allow it.">
+</div>
+
+<div class="desc2input-div">
+    <input class="input-desc2" value="Fun fact: you can edit the text here by clicking on it. This will not save if you reload!!">
+</div>
+
+<div class="urlinput-div">
+    <input class="input-url" value="https://example.com">
+    <input class="submiturl-btn" type="submit" value="Open">
+</div>
+
+<div class="embed-popup">
+    <div class="embed-popup-bar">
+        <div class="embed-popup-exit">[X]</div>
+    </div>
+    <iframe class="embed-popup-iframe" src="https://mybraincells.cf"></iframe>
+</div>
+
+</body>
+<script>
+var urlbtn = document.querySelector(".submiturl-btn");
+var urlinp = document.querySelector(".input-url");
+var popupexit = document.querySelector(".embed-popup-exit");
+var popup = document.querySelector(".embed-popup");
+var popupiframe = document.querySelector(".embed-popup-iframe");
+
+popupexit.addEventListener("click", function() {
+    popup.style.display = "none";
+});
+
+urlbtn.addEventListener("click", function() {
+    popup.style.display = "block";
+    popupiframe.src = urlinp.value;
+    if (urlinp.value == null || urlinp.value == undefined) {
+        popupiframe.src = "https://mybraincells.cf";
+    }
+});
+</script>
+</html>
